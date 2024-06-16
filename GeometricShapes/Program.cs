@@ -4,8 +4,6 @@
     {
         static void Main(string[] args)
         {
-            //int selectionFigureShape = 0;
-            //bool replyRecalculation = false;
             const int areaCalculationChoice = 1;
             const int perimeterCalculationChoice = 2;
             const int exitChoice = 3;
@@ -31,9 +29,6 @@
             } while (true);
            
         }
-         
-       
-
         public static int mainMenu() 
         {
             Console.WriteLine("MAIN MENU \n1. AREA CALCULATION\n2. PERIMETER CALCULATION\n3. EXIT\nSELECT OPERATION ACCORDING TO FOLLOWING NUMBERS:");
