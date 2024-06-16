@@ -4,91 +4,35 @@
     {
         static void Main(string[] args)
         {
-            int selectionCalculationType = 0;
-            int selectionFigureShape = 0;
-            bool replyRecalculation = false;
+            //int selectionFigureShape = 0;
+            //bool replyRecalculation = false;
+            const int areaCalculationChoice = 1;
+            const int perimeterCalculationChoice = 2;
+            const int exitChoice = 3;
+            const int subMenuChoice = 5;
             do
             {
-                selectionCalculationType = mainMenu();
+                int selectionCalculationType = mainMenu();
                 
-                if (selectionCalculationType == 1)
+                if (selectionCalculationType == areaCalculationChoice)
                 {
-                    do
-                    {
-                        selectionFigureShape = shapeSelectionSubMenu(selectionCalculationType);
-                        switch (selectionFigureShape)
-                        {
-                            case 1:
-                                do
-                                {
-                                    replyRecalculation = printResultMessage(selectionCalculationType, selectionFigureShape);
-                                } while (replyRecalculation);
-                               
-                                break;
-                            case 2:
-                                do
-                                {
-                                    replyRecalculation = printResultMessage(selectionCalculationType, selectionFigureShape);
-                                } while (replyRecalculation) ;
-                                break;
-                            case 3:
-                                do
-                                {
-                                    replyRecalculation = printResultMessage(selectionCalculationType, selectionFigureShape);
-                                } while (replyRecalculation) ;
-                                break;
-                            case 4:
-                                do
-                                {
-                                    replyRecalculation = printResultMessage(selectionCalculationType, selectionFigureShape);
-                                } while (replyRecalculation) ;
-                                break;
-                        }
-                        
-
-                    } while (selectionFigureShape != 5);
+                    calculateSelectedOperation(selectionCalculationType, subMenuChoice);
+                   
                 }
-                else if(selectionCalculationType == 2)
+                else if(selectionCalculationType == perimeterCalculationChoice)
                 {
-                    do
-                    {
-                        selectionFigureShape = shapeSelectionSubMenu(selectionCalculationType);
-                        switch (selectionFigureShape)
-                        {
-                            case 1:
-                                do
-                                {
-                                    replyRecalculation = printResultMessage(selectionCalculationType, selectionFigureShape);
-                                } while (replyRecalculation);
-                                break;
-                            case 2:
-                                do
-                                {
-                                    replyRecalculation = printResultMessage(selectionCalculationType, selectionFigureShape);
-                                } while (replyRecalculation) ;
-                                break;
-                            case 3:
-                                do
-                                {
-                                    replyRecalculation = printResultMessage(selectionCalculationType, selectionFigureShape);
-                                } while (replyRecalculation) ;
-                                break;
-                            case 4:
-                                do
-                                {
-                                    replyRecalculation = printResultMessage(selectionCalculationType, selectionFigureShape);
-                                } while (replyRecalculation) ;
-                                break;
-                        }
-                    } while (selectionFigureShape != 5);
+                    calculateSelectedOperation(selectionCalculationType, subMenuChoice);
+                   
                 }
-                else if (selectionCalculationType == 3)
+                else if (selectionCalculationType == exitChoice)
                 {
                     exitMessage();
                 }
             } while (true);
            
         }
+         
+       
 
         public static int mainMenu() 
         {
@@ -107,7 +51,6 @@
             {
                 Console.WriteLine("SELECT SHAPE TYPE FOR PERIMETER CALCULATION: ");
             }
-            
             int selectionFigureShape = int.Parse(Console.ReadLine());
             return selectionFigureShape;
         }
@@ -120,6 +63,44 @@
                 Console.WriteLine("CALCULATION FINISHED!");
                 Environment.Exit(0);
             }
+        }
+        public static void calculateSelectedOperation(int selectionCalculationType, int subMenuChoice)
+        {
+            int selectionFigureShape = 0;
+            bool replyRecalculation = false;
+            
+            do
+            {
+                selectionFigureShape = shapeSelectionSubMenu(selectionCalculationType);
+                switch (selectionFigureShape)
+                {
+                    case 1:
+                        do
+                        {
+                            replyRecalculation = printResultMessage(selectionCalculationType, selectionFigureShape);
+                        } while (replyRecalculation);
+
+                        break;
+                    case 2:
+                        do
+                        {
+                            replyRecalculation = printResultMessage(selectionCalculationType, selectionFigureShape);
+                        } while (replyRecalculation);
+                        break;
+                    case 3:
+                        do
+                        {
+                            replyRecalculation = printResultMessage(selectionCalculationType, selectionFigureShape);
+                        } while (replyRecalculation);
+                        break;
+                    case 4:
+                        do
+                        {
+                            replyRecalculation = printResultMessage(selectionCalculationType, selectionFigureShape);
+                        } while (replyRecalculation);
+                        break;
+                }
+            } while (selectionFigureShape != subMenuChoice);
         }
         public static bool printResultMessage(int operationNumber, int figureShapeNumber)
         {
