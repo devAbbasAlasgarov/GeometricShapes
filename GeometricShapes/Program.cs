@@ -4,6 +4,10 @@
     {
         static void Main(string[] args)
         {
+            application();
+        }
+        public static void application()
+        {
             const int areaCalculationChoice = 1;
             const int perimeterCalculationChoice = 2;
             const int exitChoice = 3;
@@ -11,23 +15,20 @@
             do
             {
                 int selectionCalculationType = mainMenu();
-                
+
                 if (selectionCalculationType == areaCalculationChoice)
                 {
                     calculateSelectedOperation(selectionCalculationType, subMenuChoice);
-                   
                 }
-                else if(selectionCalculationType == perimeterCalculationChoice)
+                else if (selectionCalculationType == perimeterCalculationChoice)
                 {
                     calculateSelectedOperation(selectionCalculationType, subMenuChoice);
-                   
                 }
                 else if (selectionCalculationType == exitChoice)
                 {
                     exitMessage();
                 }
             } while (true);
-           
         }
         public static int mainMenu() 
         {
@@ -151,43 +152,37 @@
                 case 1:
                     {
                         shapeName = "SQUARE";
-                        Console.WriteLine($"THE {operationName} OF {shapeName} IS {result}.");
-                        Console.WriteLine($"DO YOU WANT TO CALCULATE {operationName} FOR {shapeName}? (y - FOR YES, n - FOR NO)");
-                        replyForRecalculation = Console.ReadLine();
-                        reply = (replyForRecalculation == "y") ? true : false;
+                        finalResult(shapeName, operationName, result, replyForRecalculation, reply);
                     }
                     break;
                 case 2:
                     {
                         shapeName = "RECTANGLE";
-                        Console.WriteLine($"THE {operationName} OF {shapeName} IS {result}.");
-                        Console.WriteLine($"DO YOU WANT TO CALCULATE {operationName} FOR {shapeName}? (y - FOR YES, n - FOR NO)");
-                        replyForRecalculation = Console.ReadLine();
-                        reply = (replyForRecalculation == "y") ? true : false;
+                        finalResult(shapeName, operationName, result, replyForRecalculation, reply);
                     }
                     break;
                 case 3:
                     {
                         shapeName = "TRIANGLE";
-                        Console.WriteLine($"THE {operationName} OF {shapeName} IS {result}.");
-                        Console.WriteLine($"DO YOU WANT TO CALCULATE {operationName} FOR {shapeName}? (y - FOR YES, n - FOR NO)");
-                        replyForRecalculation = Console.ReadLine();
-                        reply = (replyForRecalculation == "y") ? true : false;
+                        finalResult(shapeName, operationName, result, replyForRecalculation, reply);
                     }
                     break;
                 case 4:
                     {
                         shapeName = "CIRCLE";
-                        Console.WriteLine($"THE {operationName} OF {shapeName} IS {result}.");
-                        Console.WriteLine($"DO YOU WANT TO CALCULATE {operationName} FOR {shapeName}? (y - FOR YES, n - FOR NO)");
-                        replyForRecalculation = Console.ReadLine();
-                        reply = (replyForRecalculation == "y") ? true : false;
+                        finalResult(shapeName, operationName, result, replyForRecalculation, reply);
                     }
                     break;
             }
             return reply;
         }
-       
+        public static void finalResult(string shapeName, string operationName, double result, string replyForRecalculation, bool reply)
+        {
+            Console.WriteLine($"THE {operationName} OF {shapeName} IS {result}.");
+            Console.WriteLine($"DO YOU WANT TO CALCULATE {operationName} FOR {shapeName}? (y - FOR YES, n - FOR NO)");
+            replyForRecalculation = Console.ReadLine();
+            reply = (replyForRecalculation == "y") ? true : false;
+        }
         /// <summary>
         /// AREA METHODS
         /// </summary>
@@ -221,7 +216,6 @@
             double lengthOfRadius = double.Parse(Console.ReadLine());
             return Math.PI * lengthOfRadius * lengthOfRadius;
         }
-
         /// <summary>
         /// PERIMETER METHODS
         /// </summary>
@@ -258,6 +252,5 @@
             double lengthOfRadius = double.Parse(Console.ReadLine());
             return Math.PI * lengthOfRadius * 2;
         }
-
     }
 }
